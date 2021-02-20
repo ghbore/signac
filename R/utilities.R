@@ -1758,6 +1758,9 @@ TabixOutputToDataFrame <- function(reads, record.ident = TRUE) {
     nrep <- elementNROWS(x = reads)
   }
   reads <- unlist(x = reads, use.names = FALSE)
+  if (length(reads) == 1){
+    reads <- paste0(reads, '\n')
+  }
   df <- fread(
     text = reads,
     sep = "\t",
